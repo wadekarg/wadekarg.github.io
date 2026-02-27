@@ -1,5 +1,24 @@
 /* ===== CSS Variables ===== */
 :root {
+  --bg: #f9fafb;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f3f4f6;
+  --accent: #2563eb;
+  --accent-dim: rgba(37, 99, 235, 0.1);
+  --text: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
+  --border-hover: #d1d5db;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-pill: 50px;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --transition: 0.2s ease;
+  --nav-height: 60px;
+}
+
+[data-theme="dark"] {
   --bg: #111827;
   --bg-card: #1f2937;
   --bg-card-hover: #273549;
@@ -10,12 +29,7 @@
   --text-muted: #6b7280;
   --border: #374151;
   --border-hover: #4b5563;
-  --radius: 10px;
-  --radius-sm: 6px;
-  --radius-pill: 50px;
   --shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  --transition: 0.2s ease;
-  --nav-height: 60px;
 }
 
 /* ===== Reset ===== */
@@ -120,7 +134,7 @@ img { max-width: 100%; display: block; }
 }
 
 .nav.scrolled {
-  background: rgba(17, 24, 39, 0.92);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 1px 0 var(--border);
