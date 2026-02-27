@@ -142,68 +142,37 @@
   });
 })();
 
-/* ===== Cursor Glow (Desktop Only) ===== */
+/* ===== Dark / Light Theme Toggle ===== */
 (function () {
-  var glow = document.getElementById('cursorGlow');
-
-  if (window.matchMedia('(pointer: fine)').matches) {
-    document.addEventListener('mousemove', function (e) {
-      glow.style.left = e.clientX + 'px';
-      glow.style.top = e.clientY + 'px';
-      glow.style.opacity = '1';
-    });
-
-    document.addEventListener('mouseleave', function () {
-      glow.style.opacity = '0';
-    });
-  } else {
-    glow.style.display = 'none';
-  }
-})();
-
-/* ===== Theme Switcher ===== */
-(function () {
-  var switcher = document.getElementById('themeSwitcher');
   var toggleBtn = document.getElementById('themeToggleBtn');
-  var dots = switcher.querySelectorAll('.theme-dot');
+  var sunIcon = toggleBtn.querySelector('.sun-icon');
+  var moonIcon = toggleBtn.querySelector('.moon-icon');
 
-  // Load saved theme
-  var saved = localStorage.getItem('portfolio-theme');
-  if (saved && saved !== 'cyber') {
-    document.documentElement.setAttribute('data-theme', saved);
-    dots.forEach(function (d) {
-      d.classList.toggle('active', d.getAttribute('data-theme') === saved);
-    });
+  function setTheme(dark) {
+    if (dark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      sunIcon.style.display = 'none';
+      moonIcon.style.display = 'block';
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      sunIcon.style.display = 'block';
+      moonIcon.style.display = 'none';
+    }
+    localStorage.setItem('portfolio-theme', dark ? 'dark' : 'light');
   }
 
-  // Toggle panel open/close
+  // Load saved preference or detect OS preference
+  var saved = localStorage.getItem('portfolio-theme');
+  if (saved === 'dark') {
+    setTheme(true);
+  } else if (saved === 'light') {
+    setTheme(false);
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    setTheme(true);
+  }
+
   toggleBtn.addEventListener('click', function () {
-    switcher.classList.toggle('open');
-  });
-
-  // Theme selection
-  dots.forEach(function (dot) {
-    dot.addEventListener('click', function () {
-      var theme = this.getAttribute('data-theme');
-
-      dots.forEach(function (d) { d.classList.remove('active'); });
-      this.classList.add('active');
-
-      if (theme === 'cyber') {
-        document.documentElement.removeAttribute('data-theme');
-      } else {
-        document.documentElement.setAttribute('data-theme', theme);
-      }
-
-      localStorage.setItem('portfolio-theme', theme);
-      switcher.classList.remove('open');
-    });
-  });
-
-  // Close on outside click
-  document.addEventListener('click', function (e) {
-    if (!switcher.contains(e.target)) {
-      switcher.classList.remove('open');
-    }
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    setTheme(!isDark);
   });
 })();
