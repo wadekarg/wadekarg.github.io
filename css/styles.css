@@ -385,7 +385,7 @@ img { max-width: 100%; display: block; }
 }
 
 .timeline-date { font-size: 0.78rem; color: var(--accent); font-weight: 600; margin-bottom: 3px; }
-.timeline-role { font-size: 1.05rem; font-weight: 700; margin-bottom: 2px; }
+.timeline-role { font-size: 1.05rem; font-weight: 700; margin-bottom: 2px; color: var(--text); }
 .timeline-company { color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 8px; }
 
 .timeline-desc { list-style: none; display: flex; flex-direction: column; gap: 5px; }
@@ -436,7 +436,7 @@ img { max-width: 100%; display: block; }
 .project-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
 
 .project-icon { font-size: 1.3rem; margin-bottom: 12px; }
-.project-title { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+.project-title { font-size: 1rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
 .project-desc { color: var(--text-secondary); font-size: 0.84rem; line-height: 1.6; flex: 1; margin-bottom: 12px; }
 .project-tech { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
 
@@ -510,7 +510,7 @@ img { max-width: 100%; display: block; }
 .education-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
 
 .education-icon { font-size: 1.8rem; margin-bottom: 10px; }
-.education-degree { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+.education-degree { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; color: var(--text); }
 .education-school { color: var(--accent); font-size: 0.85rem; font-weight: 500; margin-bottom: 2px; }
 .education-year { color: var(--text-muted); font-size: 0.78rem; }
 .education-detail { color: var(--text-secondary); font-size: 0.78rem; margin-top: 4px; }
