@@ -63,27 +63,25 @@
 (function () {
   var sections = document.querySelectorAll('section[id]');
   var navLinks = document.querySelectorAll('.nav-links a');
+  var NAV_HEIGHT = 80;
 
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        var id = entry.target.getAttribute('id');
-        navLinks.forEach(function (link) {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === '#' + id) {
-            link.classList.add('active');
-          }
-        });
+  function updateActive() {
+    var scrollY = window.scrollY + NAV_HEIGHT + 10;
+    var current = '';
+
+    sections.forEach(function (section) {
+      if (section.offsetTop <= scrollY) {
+        current = section.getAttribute('id');
       }
     });
-  }, {
-    threshold: 0.3,
-    rootMargin: '-72px 0px -50% 0px'
-  });
 
-  sections.forEach(function (section) {
-    observer.observe(section);
-  });
+    navLinks.forEach(function (link) {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  }
+
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
 })();
 
 /* ===== Nav Scroll Effect ===== */
