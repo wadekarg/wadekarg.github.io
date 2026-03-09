@@ -419,6 +419,26 @@ img { max-width: 100%; display: block; }
   background: var(--text-muted);
 }
 
+.timeline-summary {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-bottom: 4px;
+}
+
+.engineer-philosophy {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.8;
+  max-width: 720px;
+  margin: 0 auto 36px;
+  text-align: center;
+  border-left: 3px solid var(--accent);
+  padding-left: 18px;
+  text-align: left;
+}
+.engineer-philosophy em { color: var(--accent); font-style: normal; font-weight: 600; }
+
 .timeline-tech { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
 
 .tech-pill {
